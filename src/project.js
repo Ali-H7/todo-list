@@ -1,10 +1,11 @@
-class project { 
+export default class project { 
     constructor(projectName) {
         this.projectName = projectName;
-        this.tasks = []; 
+        this.tasks = [];
+        this.displayed = false; 
     };
 
-    addProjectToTheList() {
+    addProjectToList(projectList) {
         projectList.push(this);
     };
 };
