@@ -1,6 +1,10 @@
+import createTaskElement from "./task-element";
+
 export default function createProjectElement(projectList) {
     const projectEle = document.querySelector(".projects");
-    const mainContent = document.querySelector(".main")
+    // const mainContent = document.querySelector(".main")
+    const tasksElements = document.querySelector("#tasks");
+    const nameElement = document.querySelector("#project-name");
     projectList.forEach((project) => {
     console.log(project);
     if (project.displayed) {
@@ -20,7 +24,9 @@ export default function createProjectElement(projectList) {
         projectEle.appendChild(li)
 
         li.addEventListener("click", (e) => {
-            mainContent.innerHTML = ""
+            nameElement.innerHTML = name + " " + "Project";
+            tasksElements.innerHTML = "";
+            createTaskElement(project.tasks);
         })
     }
 });

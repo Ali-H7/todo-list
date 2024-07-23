@@ -5,6 +5,7 @@ export default class task {
         this.date = date; 
         this.priority = priority;
         this.checklist = checklist; 
+        this.displayed = false;
     };
 
     addTaskToProject(projectList, projectIndex) {

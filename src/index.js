@@ -2,9 +2,8 @@ import './style.css';
 import project from "./project.js";
 import task from "./task.js";
 import createProjectElement from "./project-element.js";
-
-const projectList = []; 
-
+import createTaskElement from "./task-element";
+const projectList = [];
 
 const defaultProject = new project("Default"); 
 defaultProject.addProjectToList(projectList);
@@ -30,3 +29,4 @@ addProjectBtn.addEventListener("click", ()=> {
 })
 
 createProjectElement(projectList);
+createTaskElement(projectList[0].tasks);
