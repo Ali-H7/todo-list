@@ -18,12 +18,17 @@
                 </ul>
             </div> -->
             <div id="projects">
-                <h2>Projects</h2> 
-                <i class="fa-solid fa-plus" id="add-project"></i>
+                <div class="project-plus-icon">
+                    <h2>Projects</h2>
+                    <i class="fa-solid fa-plus" id="open-project"></i>
+                </div>
                 <ul class="projects">
                     <!-- <li>
-                        <i class="fa-solid fa-hashtag"></i>
-                        Default
+                        <div>
+                            <i class="fa-solid fa-hashtag"></i>
+                            Default
+                        </div>
+                        <i class="fa-regular fa-trash-can"></i>
                     </li> -->
                 </ul>
             </div>
@@ -39,6 +44,10 @@
         <div class="main">
             <!-- <h1>Inbox</h1> -->
             <h1 id="project-name">Default Project</h1>
+            <div class="add-task">
+                <i class="fa-solid fa-plus"></i>
+                <h4 id="add-task-btn">Add Task</h4>
+            </div>
             <div class="tasks" id="tasks">
                 <!-- <div class="task">
                     <input type="checkbox" name="" id="">
@@ -56,24 +65,38 @@
                     <input type="checkbox" name="" id="">
                     <label for="">Task Name</label>
                     <p>Note about the task</p>
-                    <h5>July 23rd</h3>
-                </div> -->
+                    <h5>July 23rd</h3> -->
+                </div>
             </div>
-            <div class="add-task">
-                <i class="fa-solid fa-plus"></i>
-                <h4>Add Task</h4>
-            </div>
+            
         </div>
 
     </div>
     
-    <dialog class="project-dialog">
+    <dialog class="project-dialog" >
         <div>
-            <h3>New Project</h3>
+            <div class="project-close">
+                <h3>New Project</h3>
+                <i class="fa-solid fa-x" id="close-project-dialog"></i>
+            </div>
+            <input type="text" name="" id="project-title" placeholder="Title">
+            <button id="add-project">Add</button>
+        </div>
+    </dialog>
+
+    <dialog class="task-dialog">
+        <div class="task-close">
+            <h3>Add a Task</h3>
             <i class="fa-solid fa-x" id="close-project-dialog"></i>
         </div>
-        <input type="text" name="" id="" placeholder="Title">
-        <button>Add</button>
+        <input type="text" name="" id="task-name">
+        <input type="text" name="" id="task-description">
+        <input type="date" name="" id="task-date">
+        <input type="radio" name="priority" value="low">
+        <input type="radio" name="priority" value="medium">
+        <input type="radio" name="priority" value="high">
+        <input type="checkbox" name="" id="task-checkbox" value="true">
+        <button id="confirm-task">add</button>
     </dialog>
 </body>
 </html>

@@ -3,11 +3,15 @@ import project from "./project.js";
 import task from "./task.js";
 import createProjectElement from "./project-element.js";
 import createTaskElement from "./task-element";
-const projectList = [];
+import GetUserInputForProject from './project-input.js';
+import GetUserInputForTask from './task-input.js';
+
+export let currentProjectID = 0;
+export const projectList = [];
+const tasksElements = document.querySelector("#tasks");
 
 const defaultProject = new project("Default"); 
 defaultProject.addProjectToList(projectList);
-
 const testProject = new project("Test"); 
 testProject.addProjectToList(projectList);
 
@@ -20,13 +24,49 @@ task3.addTaskToProject(projectList, 1);
 const task4 = new task("Take Medication", "Take daily dose of medication at 8:00 AM.", "2024-07-24", "High", true);
 task4.addTaskToProject(projectList, 1);
 
+createProjectElement(projectList);
+createTaskElement(projectList[currentProjectID].tasks);
+
 const dialog = document.querySelector(".project-dialog");
+const closeProjectBtn = document.querySelector("#close-project-dialog");
+const openProjectBtn = document.querySelector("#open-project");
 const addProjectBtn = document.querySelector("#add-project");
 
 
-addProjectBtn.addEventListener("click", ()=> {
+openProjectBtn.addEventListener("click", ()=> {
     dialog.showModal();
 })
 
-createProjectElement(projectList);
-createTaskElement(projectList[0].tasks);
+closeProjectBtn.addEventListener("click", ()=> {
+    dialog.close();
+})
+
+addProjectBtn.addEventListener("click", ()=> {
+    const newProject = GetUserInputForProject();
+    if (newProject == undefined) {
+        dialog.close();
+        return;
+    }
+    const createProject = new project(newProject);
+    createProject.addProjectToList(projectList);
+    createProjectElement(projectList);
+    dialog.close();
+})
+
+const taskDialog = document.querySelector(".task-dialog");
+const addTaskBtn = document.querySelector("#add-task-btn"); 
+
+addTaskBtn.addEventListener("click", ()=> {
+    taskDialog.showModal();
+})
+
+const confirmTaskBtn = document.querySelector("#confirm-task"); 
+
+confirmTaskBtn.addEventListener("click", ()=> {
+    tasksElements.innerHTML = "";
+    const {taskName, taskDescription, taskDate, taskPriority, taskChecked} = GetUserInputForTask();
+    const createTask = new task(taskName, taskDescription, taskDate, taskPriority, taskChecked);
+    createTask.addTaskToProject(projectList, currentProjectID);
+    createTaskElement(projectList[currentProjectID].tasks);
+    taskDialog.close();
+})
