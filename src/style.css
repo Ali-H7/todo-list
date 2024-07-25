@@ -82,13 +82,17 @@ header {
 
 .tasks {
     display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    /* flex-direction: column; */
+    gap: 4rem;
     margin: 2rem 0;
+    flex-wrap: wrap;
 }
 .task {
-    border-bottom: 2px solid silver;
+    background-color: wheat;
     padding-bottom: 1rem;
+    width: 49.6rem;
+    border-radius: 15px;
+    padding: 15px;
 }
 
 input[type="checkbox"] {
@@ -99,6 +103,17 @@ input[type="checkbox"] {
     display: flex;
     gap: 1rem;
     align-items: center;
+}
+
+.task-icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.task-icons > div:last-child {
+    display: flex;
+    gap: 1rem;
 }
 
 .project-dialog {
@@ -141,10 +156,26 @@ input[type="checkbox"] {
     border: none;
 }
 
-.task-dialog {
+.task-dialog, .edit-dialog {
     margin: auto;
     border-radius: 1rem;
     border: none;
+    padding: 1rem;
+}
+
+.task-input {
+    display: flex;
+    flex-direction: column;
+    width: 45rem;
+    gap: 1rem;
+}
+
+#task-name, #task-description, #edit-task-name, #edit-task-description {
+    height: 4rem;
+    outline: none;
+    border: none;
+    font-size: 1.6rem;
+    padding-left: 0.5rem;
 }
 
 .task-close {
@@ -154,4 +185,16 @@ input[type="checkbox"] {
     padding: 0 0.5rem;
     border-bottom: silver 1px solid;
     padding-bottom: 0.5rem;
+}
+
+.low {
+    border-right: 15px solid green;
+}
+
+.medium {
+    border-right: 15px solid rgb(255, 166, 0);
+}
+
+.high {
+    border-right: 15px solid rgb(255, 0, 0);
 }

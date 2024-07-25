@@ -36,9 +36,9 @@
 
         <header>
             <h1>To-Do List</h1>
-            <div>
+            <!-- <div>
                 <h3>User <i class="fa-solid fa-user"></i></h3>
-            </div>
+            </div> -->
         </header>
 
         <div class="main">
@@ -49,24 +49,49 @@
                 <h4 id="add-task-btn">Add Task</h4>
             </div>
             <div class="tasks" id="tasks">
-                <!-- <div class="task">
-                    <input type="checkbox" name="" id="">
-                    <label for="">Task Name</label>
+                <!-- <div class="task low">
+                    <div class="task-icons">
+                        <div>
+                            <input type="checkbox" name="" id="check">
+                            <label for="check">Task Name</label>
+                        </div>
+                        <div>
+                            <i class="fa-regular fa-pen-to-square"></i>
+                            <i class="fa-regular fa-square-minus"></i>
+                        </div>
+                    </div>
                     <p>Note about the task</p>
                     <h5>July 23rd</h3>
                 </div>
-                <div class="task">
-                    <input type="checkbox" name="" id="">
-                    <label for="">Task Name</label>
+                <div class="task" class="medium">
+                    <div class="task-icons">
+                        <div>
+                            <input type="checkbox" name="" id="check">
+                            <label for="check">Task Name</label>
+                        </div>
+                        <div>
+                            <i class="fa-regular fa-pen-to-square"></i>
+                            <i class="fa-regular fa-square-minus"></i>
+                        </div>
+                    </div>
                     <p>Note about the task</p>
                     <h5>July 23rd</h3>
                 </div>
-                <div class="task">
-                    <input type="checkbox" name="" id="">
-                    <label for="">Task Name</label>
+                <div class="task" class="high">
+                    <div class="task-icons">
+                        <div>
+                            <input type="checkbox" name="" id="check">
+                            <label for="check">Task Name</label>
+                        </div>
+                        <div>
+                            <i class="fa-regular fa-pen-to-square"></i>
+                            <i class="fa-regular fa-square-minus"></i>
+                        </div>
+                    </div>
                     <p>Note about the task</p>
-                    <h5>July 23rd</h3> -->
+                    <h5>July 23rd</h3>
                 </div>
+                 -->
             </div>
             
         </div>
@@ -89,14 +114,57 @@
             <h3>Add a Task</h3>
             <i class="fa-solid fa-x" id="close-project-dialog"></i>
         </div>
-        <input type="text" name="" id="task-name">
-        <input type="text" name="" id="task-description">
-        <input type="date" name="" id="task-date">
-        <input type="radio" name="priority" value="low">
-        <input type="radio" name="priority" value="medium">
-        <input type="radio" name="priority" value="high">
-        <input type="checkbox" name="" id="task-checkbox" value="true">
-        <button id="confirm-task">add</button>
+        <div class="task-input">
+            <input type="text" id="task-name" placeholder="Title">
+            <input type="text" id="task-description" placeholder="Description">
+            <div>
+                <label for="task-date">Due Date</label>
+                <input type="date" name="" id="task-date">
+            </div>
+            <fieldset>
+                <legend>Task Priority</legend>
+                <input type="radio" name="priority" value="low" id="low">
+                <label for="low">Low</label>
+                <input type="radio" name="priority" value="medium" id="medium">
+                <label for="medium">Medium</label>
+                <input type="radio" name="priority" value="high" id="high">
+                <label for="high">High</label>
+            </fieldset>
+            <div>
+                <label for="task-checkbox">Task Completed ?</label>
+                <input type="checkbox" name="" id="task-checkbox" value="true">
+            </div>
+            <button id="confirm-task">add</button>
+        </div>
+    </dialog>
+
+    <dialog class="edit-dialog">
+        <div class="task-close">
+            <h3>Edit a Task</h3>
+            <i class="fa-solid fa-x" id="close-project-dialog"></i>
+        </div>
+        <div class="task-input">
+            <input type="text" id="edit-task-name" placeholder="Title">
+            <input type="text" id="edit-task-description" placeholder="Description">
+            <div>
+                <label for="task-date">Due Date</label>
+                <input type="date" name="" id="edit-task-date">
+            </div>
+            <fieldset>
+                <legend>Task Priority</legend>
+                <input type="radio" name="edit-priority" value="low" id="edit-low">
+                <label for="low">Low</label>
+                <input type="radio" name="edit-priority" value="medium" id="edit-medium">
+                <label for="medium">Medium</label>
+                <input type="radio" name="edit-priority" value="high" id="edit-high">
+                <label for="high">High</label>
+            </fieldset>
+            <div>
+                <label for="task-checkbox">Task Completed ?</label>
+                <input type="checkbox" name="" id="edit-task-checkbox" value="true">
+            </div>
+            <button id="edit-confirm-task">Edit</button>
+        </div>
     </dialog>
 </body>
 </html>

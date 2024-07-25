@@ -27,8 +27,11 @@ export default function createProjectElement(projectList) {
         
         div.innerHTML = hashtag.outerHTML + " " + name;
         li.appendChild(div);
-        // div.appendChild(hashtag);
-        li.appendChild(deleteIcon); 
+
+        if (name !== "Default") {
+            li.appendChild(deleteIcon);
+        }
+        
         projectEle.appendChild(li)
 
         div.addEventListener("click", (e) => {
@@ -44,6 +47,7 @@ export default function createProjectElement(projectList) {
             const currentIndex = projectList.findIndex(item => item.projectName === name);
             console.log(currentIndex);
             projectList.splice(currentIndex, 1);
+            currentProjectID = 0;
             nameElement.innerHTML = projectList[0].projectName + " " + "Project";
             createProjectElement(projectList);
             createTaskElement(projectList[currentProjectID].tasks);

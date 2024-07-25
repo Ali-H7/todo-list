@@ -11,4 +11,12 @@ export default class task {
     addTaskToProject(projectList, projectIndex) {
         projectList[projectIndex].tasks.push(this);
     };
+
+    editTask (newName, newDescription, newDate, newPriority, newChecklist) {
+        this.taskName = newName;
+        this.description = newDescription;
+        this.date = newDate; 
+        this.priority = newPriority;
+        this.checklist = newChecklist; 
+    };
 };

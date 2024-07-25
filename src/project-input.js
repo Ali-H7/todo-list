@@ -1,6 +1,7 @@
 import { projectList } from ".";
 export default function GetUserInputForProject() {
     const ProjectName = document.querySelector("#project-title").value;
+    
     // check if another project with the same name exist
     let checkName = projectList.findIndex(item => item.projectName === ProjectName);
     console.log(checkName);
