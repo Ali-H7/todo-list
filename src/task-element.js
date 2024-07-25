@@ -1,12 +1,15 @@
 import { currentProjectID } from ".";
 import { projectList } from ".";
 import { format } from "date-fns";
+import filter from "./filter";
+import { currentFilterID } from ".";
+import { isToday, isThisWeek } from "date-fns";
 
 export default function createTaskElement (projectTasks) {
     const tasksElements = document.querySelector("#tasks");
     const editDialog = document.querySelector(".edit-dialog")
-
-    projectTasks.forEach((task) => {
+    const filteredTasks = filter.filterList(projectTasks, currentFilterID);
+    filteredTasks.forEach((task, i) => {
         task.displayed = true; 
         const formattedDate = format(new Date(task.date), "iiii do MMMM u");
         const taskDiv = document.createElement("div");
@@ -41,6 +44,8 @@ export default function createTaskElement (projectTasks) {
         deleteIcon.classList.add("fa-square-minus");
         // taskDiv.classList.add("task");
         checkBox.setAttribute("type", "checkbox");
+        label.setAttribute("for", `checkbox${i}`);
+        checkBox.setAttribute("id", `checkbox${i}`);
         if (task.checklist){
             checkBox.checked = true;
         } else {
@@ -69,7 +74,6 @@ export default function createTaskElement (projectTasks) {
             }
             tasksElements.textContent = "";
             createTaskElement(projectList[currentProjectID].tasks);
-            console.log(task.checklist);
         })
 
         deleteIcon.addEventListener("click", ()=> {
@@ -77,7 +81,6 @@ export default function createTaskElement (projectTasks) {
             const currentIndex = projectTasks.findIndex(item => item.taskName === task.taskName);
             projectTasks.splice(currentIndex, 1);
             createTaskElement(projectList[currentProjectID].tasks);
-            console.log(projectTasks);
         })
 
         editIcon.addEventListener("click",()=> {
@@ -122,12 +125,10 @@ export default function createTaskElement (projectTasks) {
                 const newDate = taskInputDate.value
                 const newPriority = document.querySelector('input[name="edit-priority"]:checked').value;
                 const newChecklist = taskInputcheckBox.checked;
-                console.log(taskInputcheckBox);
                 task.editTask (newName, newDescription, newDate, newPriority, newChecklist)
                 tasksElements.innerHTML = "";
                 createTaskElement(projectList[currentProjectID].tasks);
                 editDialog.close();
-                console.log(taskInputcheckBox.value);
             })
         })
         }

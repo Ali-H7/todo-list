@@ -4,7 +4,6 @@ export default function GetUserInputForProject() {
     
     // check if another project with the same name exist
     let checkName = projectList.findIndex(item => item.projectName === ProjectName);
-    console.log(checkName);
     if (checkName == "-1") {
         return ProjectName;
     } else {

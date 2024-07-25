@@ -8,7 +8,6 @@ export default function createProjectElement(projectList) {
     const tasksElements = document.querySelector("#tasks");
     const nameElement = document.querySelector("#project-name");
     projectList.forEach((project, i) => {
-    console.log(project);
     if (project.displayed) {
         return; 
     } else {
@@ -45,13 +44,11 @@ export default function createProjectElement(projectList) {
             tasksElements.innerHTML = "";
             li.remove();
             const currentIndex = projectList.findIndex(item => item.projectName === name);
-            console.log(currentIndex);
             projectList.splice(currentIndex, 1);
             currentProjectID = 0;
             nameElement.innerHTML = projectList[0].projectName + " " + "Project";
             createProjectElement(projectList);
             createTaskElement(projectList[currentProjectID].tasks);
-            console.log(projectList);
         })
     }
 });
