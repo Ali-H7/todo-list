@@ -114,34 +114,34 @@
         </div>
     </dialog>
 
-    <dialog class="task-dialog">
-        <div class="task-close">
-            <h3>Add a Task</h3>
-            <i class="fa-solid fa-x" id="close-project-dialog"></i>
-        </div>
-        <div class="task-input">
-            <input type="text" id="task-name" placeholder="Title">
-            <input type="text" id="task-description" placeholder="Description">
-            <div>
-                <label for="task-date">Due Date</label>
-                <input type="date" name="" id="task-date">
+        <dialog class="task-dialog">
+            <div class="task-close">
+                <h3>Add a Task</h3>
+                <i class="fa-solid fa-x" id="close-project-dialog"></i>
             </div>
-            <fieldset>
-                <legend>Task Priority</legend>
-                <input type="radio" name="priority" value="low" id="low">
-                <label for="low">Low</label>
-                <input type="radio" name="priority" value="medium" id="medium">
-                <label for="medium">Medium</label>
-                <input type="radio" name="priority" value="high" id="high">
-                <label for="high">High</label>
-            </fieldset>
-            <div>
-                <label for="task-checkbox">Task Completed ?</label>
-                <input type="checkbox" name="" id="task-checkbox" value="true">
+            <div class="task-input">
+                <input type="text" id="task-name" placeholder="Title" required>
+                <input type="text" id="task-description" placeholder="Description" required>
+                <div>
+                    <label for="task-date">Due Date</label>
+                    <input type="date" name="" id="task-date" required>
+                </div>
+                <fieldset>
+                    <legend>Task Priority</legend>
+                    <input type="radio" name="priority" value="low" id="low" required>
+                    <label for="low">Low</label>
+                    <input type="radio" name="priority" value="medium" id="medium" required>
+                    <label for="medium">Medium</label>
+                    <input type="radio" name="priority" value="high" id="high" required>
+                    <label for="high">High</label>
+                </fieldset>
+                <div>
+                    <label for="task-checkbox">Task Completed ?</label>
+                    <input type="checkbox" name="" id="task-checkbox" value="true">
+                </div>
+                <button id="confirm-task">add</button>
             </div>
-            <button id="confirm-task">add</button>
-        </div>
-    </dialog>
+        </dialog>
 
     <dialog class="edit-dialog">
         <div class="task-close">

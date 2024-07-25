@@ -8,5 +8,12 @@ export default function GetUserInputForTask() {
     if (!taskChecked) {
         taskChecked = false; 
     }
+
+    document.querySelector("#task-name").value = "";
+    document.querySelector("#task-description").value = "";
+    document.querySelector("#task-date").value = "";
+    document.querySelector('input[name="priority"]:checked').value;
+    document.querySelector("#task-checkbox").checked = false;
+
     return {taskName, taskDescription, taskDate, taskPriority, taskChecked};
 }

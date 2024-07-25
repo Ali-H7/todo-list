@@ -46,10 +46,6 @@ closeProjectBtn.addEventListener("click", ()=> {
 
 addProjectBtn.addEventListener("click", ()=> {
     const newProject = GetUserInputForProject();
-    if (newProject === undefined) {
-        dialog.close();
-        return;
-    }
     const createProject = new project(newProject);
     createProject.addProjectToList(projectList);
     createProjectElement(projectList);
@@ -65,7 +61,7 @@ addTaskBtn.addEventListener("click", ()=> {
 
 const confirmTaskBtn = document.querySelector("#confirm-task"); 
 
-confirmTaskBtn.addEventListener("click", ()=> {
+confirmTaskBtn.addEventListener("click", (e)=> {
     tasksElements.innerHTML = "";
     const {taskName, taskDescription, taskDate, taskPriority, taskChecked} = GetUserInputForTask();
     const createTask = new task(taskName, taskDescription, taskDate, taskPriority, taskChecked);
