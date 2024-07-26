@@ -6,6 +6,8 @@ import { currentFilterID } from ".";
 import { isToday, isThisWeek } from "date-fns";
 import storage from "./storage";
 import task from "./task";
+import { selectedTask } from ".";
+import editTask from "./task-edit";
 
 export default function createTaskElement (projectTasks) {
     const tasksElements = document.querySelector("#tasks");
@@ -95,6 +97,7 @@ export default function createTaskElement (projectTasks) {
             const taskInputHigh = document.querySelector("#edit-high")
             const taskInputcheckBox = document.querySelector("#edit-task-checkbox")
 
+            selectedTask = i; 
             taskInputName.setAttribute("value", task.taskName);
             taskInputDescription.setAttribute("value", task.description);
             taskInputDate.setAttribute("value", task.date);
@@ -121,17 +124,20 @@ export default function createTaskElement (projectTasks) {
             }
             const editBtn = document.querySelector("#edit-confirm-task");
             editDialog.showModal();
-            editBtn.addEventListener("click", ()=> {
-                const newName = taskInputName.value
-                const newDescription = taskInputDescription.value
-                const newDate = taskInputDate.value
-                const newPriority = document.querySelector('input[name="edit-priority"]:checked').value;
-                const newChecklist = taskInputcheckBox.checked;
-                task.editTask (newName, newDescription, newDate, newPriority, newChecklist)
-                tasksElements.innerHTML = "";
-                createTaskElement(projectList[currentProjectID].tasks);
-                editDialog.close();
-            })
+            editTask();
+            // editBtn.addEventListener("click", ()=> {
+                // const newName = taskInputName.value
+                // const newDescription = taskInputDescription.value
+                // const newDate = taskInputDate.value
+                // const newPriority = document.querySelector('input[name="edit-priority"]:checked').value;
+                // const newChecklist = taskInputcheckBox.checked;
+                // task.editTask (newName, newDescription, newDate, newPriority, newChecklist)
+                // tasksElements.innerHTML = "";
+                // createTaskElement(projectList[currentProjectID].tasks);
+                // editDialog.close();
+                // console.log(projectList[0]);
+                // task.editTask ();
+            // })
         })
         }
     );

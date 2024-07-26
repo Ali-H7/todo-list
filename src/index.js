@@ -13,7 +13,9 @@ export let currentProjectID = 0;
 export const projectList = [];
 storage.retreive();
 export let currentFilterID = 0;
+export let selectedTask = 0; 
 const tasksElements = document.querySelector("#tasks");
+
 
 // const defaultProject = new project("Default"); 
 // defaultProject.addProjectToList(projectList);
@@ -72,3 +74,5 @@ confirmTaskBtn.addEventListener("click", (e)=> {
     createTaskElement(projectList[currentProjectID].tasks);
     taskDialog.close();
 })
+
+// console.log(projectList[1]);
