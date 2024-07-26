@@ -4,6 +4,8 @@ import { format } from "date-fns";
 import filter from "./filter";
 import { currentFilterID } from ".";
 import { isToday, isThisWeek } from "date-fns";
+import storage from "./storage";
+import task from "./task";
 
 export default function createTaskElement (projectTasks) {
     const tasksElements = document.querySelector("#tasks");
@@ -133,4 +135,5 @@ export default function createTaskElement (projectTasks) {
         })
         }
     );
+    storage.store();
 };
