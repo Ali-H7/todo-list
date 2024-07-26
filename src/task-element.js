@@ -98,9 +98,9 @@ export default function createTaskElement (projectTasks) {
             const taskInputcheckBox = document.querySelector("#edit-task-checkbox")
 
             selectedTask = i; 
-            taskInputName.setAttribute("value", task.taskName);
-            taskInputDescription.setAttribute("value", task.description);
-            taskInputDate.setAttribute("value", task.date);
+            taskInputName.value = projectList[currentProjectID].tasks[i].taskName;
+            taskInputDescription.value = projectList[currentProjectID].tasks[i].description;
+            taskInputDate.value = projectList[currentProjectID].tasks[i].date;
 
             switch (task.priority){
                 case "low":
