@@ -26,6 +26,7 @@ export default class filter {
             switch(filter) {
                 case "All":
                   filterIcon.classList.add("fa-calendar-days");
+                  filterLi.classList.add("selected");
                   break;
                 case "Today":
                   filterIcon.classList.add("fa-calendar-day");
@@ -48,6 +49,13 @@ export default class filter {
                 tasksElement.textContent = ""; 
                 currentFilterID = i; 
                 createTaskElement(projectList[currentProjectID].tasks);
+
+                const listItems = document.querySelectorAll(".filter > li")
+                console.log(listItems);
+                listItems.forEach((item) => {
+                    item.classList.remove("selected")
+                })
+                filterLi.classList.add("selected");
             })
             filterListElement.appendChild(filterLi);
             filterLi.appendChild(filterIcon)

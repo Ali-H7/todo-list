@@ -124,7 +124,7 @@ export default function createTaskElement (projectTasks) {
             }
             const editBtn = document.querySelector("#edit-confirm-task");
             editDialog.showModal();
-            editTask();
+            // editTask();
             // editBtn.addEventListener("click", ()=> {
                 // const newName = taskInputName.value
                 // const newDescription = taskInputDescription.value

@@ -7,6 +7,7 @@ import GetUserInputForProject from './project-input.js';
 import GetUserInputForTask from './task-input.js';
 import filter from './filter.js';
 import storage from './storage.js';
+import editTask from './task-edit.js';
 
 
 export let currentProjectID = 0;
@@ -45,12 +46,16 @@ addProjectBtn.addEventListener("click", ()=> {
 })
 
 const taskDialog = document.querySelector(".task-dialog");
-const addTaskBtn = document.querySelector(".add-task"); 
+const addTaskBtn = document.querySelector(".add-task");
+const taskCloseBtn = document.querySelector("#close-task-dialog");
 
 addTaskBtn.addEventListener("click", ()=> {
     taskDialog.showModal();
 })
 
+taskCloseBtn.addEventListener("click", ()=> {
+    taskDialog.close();
+})
 const confirmTaskBtn = document.querySelector("#confirm-task"); 
 
 confirmTaskBtn.addEventListener("click", (e)=> {
@@ -64,4 +69,13 @@ confirmTaskBtn.addEventListener("click", (e)=> {
     taskDialog.close();
 })
 
-console.log(projectList);
+const editDialog = document.querySelector(".edit-dialog")
+const editCloseBtn = document.querySelector("#close-edit-dialog");
+
+editCloseBtn.addEventListener("click", ()=> {
+    editDialog.close();
+})
+
+editTask();
+
+

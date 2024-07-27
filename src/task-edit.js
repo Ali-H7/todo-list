@@ -26,15 +26,22 @@ export default function editTask () {
             };
 
             editBtn.addEventListener("click", ()=> {
-                editDialog.showModal();
+                // editDialog.showModal();
                 const newName = taskInputName.value
                 const newDescription = taskInputDescription.value
                 const newDate = taskInputDate.value
                 const newPriority = document.querySelector('input[name="edit-priority"]:checked').value;
                 const newChecklist = taskInputcheckBox.checked;
+                const checkCurrentName = projectList[currentProjectID].tasks[selectedTask].taskName
                 let checkName = projectList[currentProjectID].tasks.some(task => task.taskName.toLowerCase() == newName.toLowerCase());
 
+                if (newName == checkCurrentName) {
+                    checkName = false;
+                    // console.log (checkName);
+                }
+
                 if (checkName == true) {
+                    console.log(checkName)
                     return alert("There's another task with this name");
                 } else if (newName === "") {
                     return alert("You can't leave the project name empty");
@@ -46,6 +53,5 @@ export default function editTask () {
                 tasksElements.innerHTML = "";
                 createTaskElement(projectList[currentProjectID].tasks);
                 editDialog.close();
-                console.log(projectList);
             })
 }

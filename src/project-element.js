@@ -33,20 +33,29 @@ export default function createProjectElement(projectList) {
     div.innerHTML = hashtag.outerHTML + " " + name;
     li.appendChild(div);
 
+    if (name == "Default") li.classList.add("selected");
+
     if (name !== "Default") {
         li.appendChild(deleteIcon);
     }
     
     projectEle.appendChild(li)
 
-    div.addEventListener("click", (e) => {
+    li.addEventListener("click", (e) => {
         currentProjectID = i; 
         nameElement.innerHTML = name + " " + "Project";
         tasksElements.innerHTML = "";
         createTaskElement(project.tasks);
+
+        const listItems = document.querySelectorAll(".projects> li")
+        listItems.forEach((item) => {
+            item.classList.remove("selected")
+        })
+        li.classList.add("selected");
     })
 
-    deleteIcon.addEventListener("click", () => {
+    deleteIcon.addEventListener("click", (e) => {
+        e.stopPropagation();
         tasksElements.innerHTML = "";
         li.remove();
         const currentIndex = projectList.findIndex(item => item.projectName === name);
