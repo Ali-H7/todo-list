@@ -3,6 +3,7 @@ import { currentFilterID } from ".";
 import createTaskElement from "./task-element";
 import { projectList } from ".";
 import { currentProjectID } from ".";
+
 export default class filter { 
     static filters = []; 
     constructor(filterName) {

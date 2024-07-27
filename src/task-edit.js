@@ -12,6 +12,7 @@ export default function editTask () {
             // const taskInputHigh = document.querySelector("#edit-high")
             const taskInputcheckBox = document.querySelector("#edit-task-checkbox")
             const tasksElements = document.querySelector("#tasks");
+            
 
             const editBtn = document.querySelector("#edit-confirm-task");
             const editDialog = document.querySelector(".edit-dialog")
@@ -31,6 +32,16 @@ export default function editTask () {
                 const newDate = taskInputDate.value
                 const newPriority = document.querySelector('input[name="edit-priority"]:checked').value;
                 const newChecklist = taskInputcheckBox.checked;
+                let checkName = projectList[currentProjectID].tasks.some(task => task.taskName.toLowerCase() == newName.toLowerCase());
+
+                if (checkName == true) {
+                    return alert("There's another task with this name");
+                } else if (newName === "") {
+                    return alert("You can't leave the project name empty");
+                } else if (newDescription === "") {
+                    return alert("You can't leave the project Description empty");
+                }
+
                 assignEditedTask (newName, newDescription, newDate, newPriority, newChecklist, projectList, selectedTask, currentProjectID)
                 tasksElements.innerHTML = "";
                 createTaskElement(projectList[currentProjectID].tasks);
